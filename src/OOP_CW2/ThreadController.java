@@ -1,7 +1,7 @@
 package OOP_CW2;
 
-import javax.swing.*;
 import java.util.*;
+import javax.swing.*;
 
 public class ThreadController extends Thread{
 
@@ -16,7 +16,7 @@ public class ThreadController extends Thread{
     //Erstellen von 3 Reels mit zufälliger Symbolreihenfolge
     public void threadSpinMethod(){
         this.slotMachine = new SlotMachine();
-        reelImages = new ArrayList<ArrayList<Symbol>>();
+        reelImages = new ArrayList<>();
 
                 for(int x = 0 ; x < 3 ; x++) {
                     reelImages.add(slotMachine.getReel(x));
