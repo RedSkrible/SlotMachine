@@ -8,11 +8,11 @@ import javax.swing.*;
 
 public class GraphicalUserInterface extends JFrame {
 
-    //Declaration of the variables
+    //Deklaration der Variablen
     private JButton spinBtn, addCoinBtn, betOneBtn, betMaxBtn, resetBtn;
     private static JLabel title, creditArea, betArea, creditAreaTitle, betAreaTitle;
     public static JLabel reel1, reel2, reel3;
-    private Container contentPane;
+    private Container contentPane; 
     private SlotMachine slotMachine;
     private static int index, wins, losses, noOfGames;
     private int profit, loss;
@@ -20,7 +20,7 @@ public class GraphicalUserInterface extends JFrame {
     public static boolean flag = true, reelClickable = true;
     private ArrayList<ArrayList<Symbol>> reelImages;
 
-    //Declaration of the Constructor
+    //Deklaration des Konstruktors
     public GraphicalUserInterface(SlotMachine slotMachine) {
         this.slotMachine = slotMachine;
         contentPane = getContentPane();
@@ -30,7 +30,7 @@ public class GraphicalUserInterface extends JFrame {
         startup();
     }
 
-    //Setting up the public Getters
+    //Einrichten von public Getters
     public static int getWins() {
         return wins;
     }
@@ -43,14 +43,14 @@ public class GraphicalUserInterface extends JFrame {
         return average;
     }
 
-    //Setting up Different types of JPanels so we can include them inside a ContentPane
+    //Einrichten verschiedener Typen von JPanels, damit wir sie in ein ContentPane einfügen können
     private JComponent titlePanel() {
         loadFont();
         JPanel titlePanel = new JPanel();
         title = new JLabel();
-        title.setText("Slot Machine GUI");
+        title.setText("Slot Machine");
         title.setFont(new Font("New Athletic M54", Font.PLAIN, 30));
-        title.setForeground(Color.cyan);
+        title.setForeground(Color.magenta);
         titlePanel.add(title);
         titlePanel.setBackground(Color.BLACK);
         return titlePanel;
@@ -65,7 +65,7 @@ public class GraphicalUserInterface extends JFrame {
         constraints.insets = new Insets(5, 5, 20, 40);
 
         creditAreaTitle = new JLabel();
-        creditAreaTitle.setText("Credit Area");
+        creditAreaTitle.setText("Kredit");
         creditAreaTitle.setFont(new Font("New Athletic M54", Font.PLAIN, 30));
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -89,7 +89,7 @@ public class GraphicalUserInterface extends JFrame {
         mainPanel.add(creditArea, constraints);
 
         betAreaTitle = new JLabel();
-        betAreaTitle.setText("Bet Area");
+        betAreaTitle.setText("Wette");
         betAreaTitle.setFont(new Font("New Athletic M54", Font.PLAIN, 30));
         constraints.gridx = 0;
         constraints.gridy = 2;
@@ -142,20 +142,20 @@ public class GraphicalUserInterface extends JFrame {
         mainPanel.add(spinBtn, constraints);
 
         constraints.gridwidth = 1;
-        addCoinBtn = new JButton("Add Coin");
+        addCoinBtn = new JButton("Coin Hinzufügen");
         addCoinBtn.setBackground(new Color(57, 228, 119));
         constraints.gridx = 4;
         constraints.gridy = 0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         mainPanel.add(addCoinBtn, constraints);
 
-        betOneBtn = new JButton("Bet One");
+        betOneBtn = new JButton("1 Coin Wetten");
         betOneBtn.setBackground(new Color(57, 228, 119));
         constraints.gridx = 4;
         constraints.gridy = 1;
         mainPanel.add(betOneBtn, constraints);
 
-        betMaxBtn = new JButton("Bet Max");
+        betMaxBtn = new JButton("Alles Wetten");
         betMaxBtn.setBackground(new Color(57, 228, 119));
         constraints.gridx = 4;
         constraints.gridy = 2;
@@ -227,7 +227,7 @@ public class GraphicalUserInterface extends JFrame {
         return mainPanel;
     }
 
-    //Loading the preview of the three Reels
+    //Laden der Vorschau der drei Reels
     private void startup() {
 
         reelImages = new ArrayList<>();
@@ -242,7 +242,7 @@ public class GraphicalUserInterface extends JFrame {
         reelClickable = false;
     }
 
-    //Method to update current credit and bet amounts
+    //Methode zur Aktualisierung der aktuellen Kredit- und Einsatzbeträge
     private void updateLabels() {
         if(slotMachine.getRemCredit()<10){
             creditArea.setText(" 0" + slotMachine.getRemCredit() + " ");
@@ -256,7 +256,7 @@ public class GraphicalUserInterface extends JFrame {
         }
     }
 
-    //Methods to be invoked in each and every button click event
+    //Methoden, die bei jedem einzelnen BtnPress aufgerufen werden
     private void addCoinBtnPressed() {
         slotMachine.addCoin();
         updateLabels();
@@ -268,7 +268,7 @@ public class GraphicalUserInterface extends JFrame {
             updateLabels();
             spinButtonVisibility();
         } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(null, "Not Enough Credits Available!!!!");
+            JOptionPane.showMessageDialog(null, "Nicht genügend Coins!!!!");
         }
     }
 
@@ -279,7 +279,7 @@ public class GraphicalUserInterface extends JFrame {
             spinButtonVisibility();
             betMaxBtn.setEnabled(false);
         } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(null, "Not Enough Credits Available!!!!");
+            JOptionPane.showMessageDialog(null, "Nicht genügend Coins!!!!");
         }
     }
 
@@ -296,7 +296,7 @@ public class GraphicalUserInterface extends JFrame {
         flag = true;
     }
 
-    //Makes sure that spin button won't be visible when the bet amount is any lesser than 1
+    //Stellt sicher, dass der Spin-Button nicht sichtbar ist, wenn der Einsatz kleiner als 1 ist.
     private void spinButtonVisibility() {
         if (slotMachine.getCurrentBet() == 0) {
             spinBtn.setEnabled(false);
@@ -319,7 +319,7 @@ public class GraphicalUserInterface extends JFrame {
         resetBtn.setEnabled(true);
     }
 
-    //Calculating Final Result (No of games, wins, losses)
+    //Berechnung des Endergebnisses (Anzahl der Spiele, Siege, Niederlagen)
     private void calculateResult() {
         if(reelClickable) {
             if (reel1.getIcon().toString() == reel2.getIcon().toString()
@@ -328,9 +328,9 @@ public class GraphicalUserInterface extends JFrame {
                 profit=ThreadController.reelImages.get(0).get(ThreadController.getIndex()).getValue() * slotMachine.getCurrentBet();
                 slotMachine.setRemCredit(slotMachine.getRemCredit()
                         + ThreadController.reelImages.get(0).get(ThreadController.getIndex()).getValue() * slotMachine.getCurrentBet());
-                JOptionPane.showMessageDialog(null, "You've Earned: "
+                JOptionPane.showMessageDialog(null, "Du erhältst: "
                         + ThreadController.reelImages.get(0).get(ThreadController.getIndex()).getValue() * slotMachine.getCurrentBet()
-                        + " Credits");
+                        + " Coins");
 
                 slotMachine.setCurrentBet(0);
                 spinButtonVisibility();
@@ -340,10 +340,10 @@ public class GraphicalUserInterface extends JFrame {
             } else if (reel1.getIcon().toString() == reel2.getIcon().toString()
                     || reel2.getIcon().toString() == reel3.getIcon().toString()
                     || reel1.getIcon().toString() == reel3.getIcon().toString()) {
-                JOptionPane.showMessageDialog(null, "You've Earned a Free Spin!!!!!");
+                JOptionPane.showMessageDialog(null, "Du erhältst einen freien Spin!!!!!");
 
             } else {
-                JOptionPane.showMessageDialog(null, "You've Lost!!!!!");
+                JOptionPane.showMessageDialog(null, "Du hast verloren!!!!!");
                 loss=slotMachine.getCurrentBet();
                 slotMachine.setCurrentBet(0);
                 spinButtonVisibility();
@@ -363,7 +363,7 @@ public class GraphicalUserInterface extends JFrame {
         reelClickable = false;
     }
 
-    //Loading custom Font
+    //Lädt Custom Font
     private void loadFont(){
         try {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -373,16 +373,16 @@ public class GraphicalUserInterface extends JFrame {
         }
     }
 
-    //Main method
+    //Main Methode
     public static void main(String[] args) {
         SlotMachine slotMachine = new SlotMachine();
         GraphicalUserInterface gui = new GraphicalUserInterface(slotMachine);
-        gui.setTitle("Slot Machine GUI");
+        gui.setTitle("Slot Machine");
         gui.setSize(924, 561);
         gui.setMinimumSize(new Dimension(924, 561));
         gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gui.setLocationRelativeTo(null);
-        gui.setResizable(true);
+        gui.setResizable(false);
         gui.setVisible(true);
     }
 

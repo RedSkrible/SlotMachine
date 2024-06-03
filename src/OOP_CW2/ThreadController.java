@@ -13,7 +13,7 @@ public class ThreadController extends Thread{
         return index;
     }
 
-    //Creating 3 Reels with Random Symbol Order
+    //Erstellen von 3 Reels mit zufälliger Symbolreihenfolge
     public void threadSpinMethod(){
         this.slotMachine = new SlotMachine();
         reelImages = new ArrayList<ArrayList<Symbol>>();
@@ -26,7 +26,7 @@ public class ThreadController extends Thread{
                 thread.start();
     }
 
-    //Animating the spin process using Threads
+    //Animieren des Drehvorgangs mit Threads
     public void run(){
         while(GraphicalUserInterface.flag){
             GraphicalUserInterface.reel1.setIcon(reelImages.get(0).get(index).getImage());

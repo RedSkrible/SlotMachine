@@ -12,18 +12,18 @@ public class StatsGUI extends JFrame {
     private JButton saveStats;
     private JTextArea textArea;
     private Container contentPane;
-    private String format = "%1$1s %2$20s %3$20s";
+    private String format = "%1$1s %2$20s %3$20s"; 
     private String statsHeader, statsOutput;
     private String fileName;
 
-    //Constructor of the StatsGUI Class
+    //Constructor der StatsGUI Klasse
     public StatsGUI(){
         contentPane = getContentPane();
         contentPane.add(statsPanel(), BorderLayout.CENTER);
     }
 
-    //User's gaming stats will be displayed on a Table type Text Area.
-    //(For displaying gaming stats I think the best method is to go with such a graphical component)
+    //Die Spielstatistiken des Benutzers werden in einem tabellenartigen Textbereich angezeigt.
+    //(Für die Anzeige von Spielstatistiken halte ich eine solche grafische Komponente für die beste Methode)
     private JComponent statsPanel(){
         JPanel statsPanel = new JPanel();
 
@@ -52,7 +52,7 @@ public class StatsGUI extends JFrame {
         return statsPanel;
     }
 
-    //Saves the Stats Data to text File
+    //Speichert die Statistikdaten in einer Textdatei
     private void saveToFile(){
 
         DateFormat df = new SimpleDateFormat("dd-MM-yy   HH-mm-ss");

@@ -5,10 +5,10 @@ import javax.swing.*;
 
 public class Reel {
 
-    //creates an ArrayList list of symbol objects
+    //erstellt eine ArrayList von Symbol Objekten
     private ArrayList<Symbol> symbol = new ArrayList<>();
 
-    //Loads all the Symbols inside the Reel Constructor so that each reel can hold all those symbols
+    //Lädt alle Symbole in den Reel Constructor, so dass jede Reel all diese Symbole enthalten kann
     public Reel()
     {
             Symbol bell = new Symbol();
@@ -41,7 +41,7 @@ public class Reel {
             watermelon.setValue(5);
             symbol.add(watermelon);
 
-            //makes sure that each time a reel gets created it shuffles the order of the symbols in it.
+            //sorgt dafür, dass die Reihenfolge der Symbole auf den Reels jedes Mal neu gemischt wird, wenn eine Reel erstellt wird.
             Collections.shuffle(symbol);
         }
 
@@ -51,7 +51,7 @@ public class Reel {
         }
     }
 
-    //when the spin method is invoked it will return the whole instance of a symbol ArrayList
+    //wenn die Spin-Methode aufgerufen wird, wird die gesamte Instanz eines Symbols ArrayList zurückgegeben
     public ArrayList<Symbol> spin() {
         return symbol;
     }
