@@ -8,7 +8,7 @@ public class SlotMachine {
     private int currentBet = 0;
 
     //Ein Reel Array, welches 3 Reels enthalten würde
-    private Reel[] reel = new Reel[3];
+    private final Reel[] reel = new Reel[3];
 
     //Stellt sicher, dass beim Laden des Konstruktors 3 neue Reels
     public SlotMachine() {

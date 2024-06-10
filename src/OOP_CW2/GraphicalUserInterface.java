@@ -12,8 +12,8 @@ public class GraphicalUserInterface extends JFrame {
     private JButton spinBtn, addCoinBtn, betOneBtn, betMaxBtn, resetBtn;
     private static JLabel title, creditArea, betArea, creditAreaTitle, betAreaTitle;
     public static JLabel reel1, reel2, reel3;
-    private Container contentPane; 
-    private SlotMachine slotMachine;
+    private final Container contentPane; 
+    private final SlotMachine slotMachine;
     private static int index, wins, losses, noOfGames;
     private int profit, loss;
     private static double statValue, average;
@@ -322,9 +322,9 @@ public class GraphicalUserInterface extends JFrame {
     //Berechnung des Endergebnisses (Anzahl der Spiele, Siege, Niederlagen)
     private void calculateResult() {
         if(reelClickable) {
-            if (reel1.getIcon().toString() == reel2.getIcon().toString()
-                    && reel2.getIcon().toString() == reel3.getIcon().toString()
-                    && reel1.getIcon().toString() == reel3.getIcon().toString()) {
+            if (reel1.getIcon().toString().equals(reel2.getIcon().toString())
+                    && reel2.getIcon().toString().equals(reel3.getIcon().toString())
+                    && reel1.getIcon().toString().equals(reel3.getIcon().toString())) {
                 profit=ThreadController.reelImages.get(0).get(ThreadController.getIndex()).getValue() * slotMachine.getCurrentBet();
                 slotMachine.setRemCredit(slotMachine.getRemCredit()
                         + ThreadController.reelImages.get(0).get(ThreadController.getIndex()).getValue() * slotMachine.getCurrentBet());
@@ -337,10 +337,10 @@ public class GraphicalUserInterface extends JFrame {
                 updateLabels();
                 noOfGames++;
                 wins++;
-            } else if (reel1.getIcon().toString() == reel2.getIcon().toString()
-                    || reel2.getIcon().toString() == reel3.getIcon().toString()
-                    || reel1.getIcon().toString() == reel3.getIcon().toString()) {
-                JOptionPane.showMessageDialog(null, "Du erhältst einen freien Spin!!!!!");
+            } else if (reel1.getIcon().toString().equals(reel2.getIcon().toString())
+                    || reel2.getIcon().toString().equals(reel3.getIcon().toString())
+                    || reel1.getIcon().toString().equals(reel3.getIcon().toString())) {
+                JOptionPane.showMessageDialog(null, "Du erhältst 1 Freispiel!!!!!");
 
             } else {
                 JOptionPane.showMessageDialog(null, "Du hast verloren!!!!!");

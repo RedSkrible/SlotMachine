@@ -1,18 +1,18 @@
 package OOP_CW2;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.text.*;
 import java.util.*;
+import javax.swing.*;
 
 public class StatsGUI extends JFrame {
 
     private JButton saveStats;
     private JTextArea textArea;
-    private Container contentPane;
-    private String format = "%1$1s %2$20s %3$20s"; 
+    private final Container contentPane;
+    private final String format = "%1$1s %2$20s %3$20s"; 
     private String statsHeader, statsOutput;
     private String fileName;
 
@@ -42,11 +42,8 @@ public class StatsGUI extends JFrame {
         statsPanel.add(saveStats);
 
 
-        saveStats.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveToFile();
-            }
+        saveStats.addActionListener((ActionEvent e) -> {
+            saveToFile();
         });
 
         return statsPanel;
@@ -74,9 +71,6 @@ public class StatsGUI extends JFrame {
             System.out.println("Done");
 
         } catch (IOException e) {
-
-            e.printStackTrace();
-
         } finally {
 
             try {
@@ -88,9 +82,6 @@ public class StatsGUI extends JFrame {
                     fw.close();
 
             } catch (IOException ex) {
-
-                ex.printStackTrace();
-
             }
         }
         }

@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Reel {
 
     //erstellt eine ArrayList von Symbol Objekten
-    private ArrayList<Symbol> symbol = new ArrayList<>();
+    private final ArrayList<Symbol> symbol = new ArrayList<>();
 
     //Lädt alle Symbole in den Reel Constructor, so dass jede Reel all diese Symbole enthalten kann
     public Reel()
