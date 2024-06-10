@@ -7,12 +7,12 @@ public class SlotMachine {
     private int remCredit = 10;
     private int currentBet = 0;
 
-    //Ein Reel Array, welches 3 Reels enthalten würde
+    // Ein Reel Array, welches 3 Reels enthalten würde
     private final Reel[] reel = new Reel[3];
 
-    //Stellt sicher, dass beim Laden des Konstruktors 3 neue Reels
+    // Stellt sicher, dass beim Laden des Konstruktors 3 neue Reels
     public SlotMachine() {
-        for(int x = 0 ; x < 3 ; x++) {
+        for (int x = 0; x < 3; x++) {
             reel[x] = new Reel();
         }
     }
@@ -33,33 +33,31 @@ public class SlotMachine {
         this.currentBet = currentBet;
     }
 
-    //Wirft die entsprechende Reel entsprechend ihrer Nummer zurück und dreht sie
+    // Wirft die entsprechende Reel entsprechend ihrer Nummer zurück und dreht sie
     public ArrayList<Symbol> getReel(int reelNo) {
         return reel[reelNo].spin();
     }
 
-    public void addCoin(){
-        remCredit+=1;
+    public void addCoin() {
+        remCredit += 1;
     }
 
-    public void betOne(){
-        if(remCredit>0){
-            currentBet+=1;
-            remCredit-=1;
-        }else{
+    public void betOne() {
+        if (remCredit > 0) {
+            currentBet += 1;
+            remCredit -= 1;
+        } else {
             throw new RuntimeException("Nicht genug Coins");
         }
     }
 
-    public void betMax(){
-        if(remCredit>2){
-           currentBet+=3;
-            remCredit-=3;
-        }else{
+    public void betMax() {
+        if (remCredit > 2) {
+            currentBet += remCredit;
+            remCredit -= remCredit;
+        } else {
             throw new RuntimeException("Nicht genug Coins");
         }
     }
-
 
 }
-

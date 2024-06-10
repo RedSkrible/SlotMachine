@@ -277,7 +277,7 @@ public class GraphicalUserInterface extends JFrame {
             slotMachine.betMax();
             updateLabels();
             spinButtonVisibility();
-            betMaxBtn.setEnabled(false);
+            
         } catch (RuntimeException e) {
             JOptionPane.showMessageDialog(null, "Nicht genügend Coins!!!!");
         }

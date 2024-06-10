@@ -27,6 +27,7 @@ public class ThreadController extends Thread{
     }
 
     //Animieren des Drehvorgangs mit Threads
+    @Override
     public void run(){
         while(GraphicalUserInterface.flag){
             GraphicalUserInterface.reel1.setIcon(reelImages.get(0).get(index).getImage());
